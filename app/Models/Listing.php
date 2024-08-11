@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereWebsite($value)
+ * @method static \Database\Factories\ListingFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing filter(array $filters)
  * @mixin \Eloquent
  */
 class Listing extends Model
