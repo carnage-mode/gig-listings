@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
         @vite('resources/css/app.css')
+        @vite('resources/js/app.js')
     </head>
     <body>
         <nav class="flex justify-between items-center mb-4">
