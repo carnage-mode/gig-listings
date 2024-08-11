@@ -8,13 +8,13 @@ use App\Models\Listing;
 class ListingController extends Controller
 {
     public function index(): View {
-        return view('listings', [
+        return view('listings.index', [
             'listings' => Listing::all(),
         ]);
     }
 
     public function show(Listing $listing): View {
-        return view('listing', [
+        return view('listings.show', [
             'listing' => $listing,
         ]);
     }
