@@ -33,9 +33,9 @@ class ListingController extends Controller
     public function store(Request $request): RedirectResponse {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'company' => ['required', Rule::unique('listings', 'company')],
+            'company' => 'required',
             'location' => 'required',
-            'website' => 'required',
+            'website' => ['required', 'url'],
             'email' => ['required', 'email'],
             'tags' => 'required',
             'description' => 'required',
