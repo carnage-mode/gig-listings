@@ -63,6 +63,7 @@
                         class="border border-gray-200 rounded p-2 w-full"
                         name="email"
                         value="{{old('email')}}"
+                        placeholder="john@example.com"
                     />
                     @error('email')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -80,6 +81,7 @@
                         type="text"
                         class="border border-gray-200 rounded p-2 w-full"
                         name="website"
+                        placeholder="https://example.com"
                         value="{{old('website')}}"
                     />
                     @error('website')
