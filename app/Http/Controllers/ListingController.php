@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use App\Models\Listing;
-use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Session;
-use Validator;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\File;
 
 class ListingController extends Controller
 {
@@ -30,7 +30,7 @@ class ListingController extends Controller
         return view('listings.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request): RedirectResponse {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'company' => ['required', Rule::unique('listings', 'company')],
@@ -39,6 +39,7 @@ class ListingController extends Controller
             'email' => ['required', 'email'],
             'tags' => 'required',
             'description' => 'required',
+            'logo' => File::types(['jpg', 'png', 'svg'])->max(1024),
         ]);
 
         if ($validator->fails()) {
@@ -47,7 +48,13 @@ class ListingController extends Controller
                 ->withInput();
         }
 
-        Listing::create($validator->validated());
+        $formFields = $validator->validated();
+
+        if ($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+        Listing::create($formFields);
 
         return redirect('/')->with('message', 'Listing created successfully!');
     }

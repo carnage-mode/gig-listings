@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $title
@@ -33,6 +33,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereWebsite($value)
  * @method static \Database\Factories\ListingFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Listing filter(array $filters)
+ * @property string|null $logo
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereLogo($value)
  * @mixin \Eloquent
  */
 class Listing extends Model
