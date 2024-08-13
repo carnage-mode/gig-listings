@@ -58,4 +58,37 @@ class ListingController extends Controller
 
         return redirect('/')->with('message', 'Listing created successfully!');
     }
+
+    public function edit(Listing $listing) {
+        return view('listings.edit', ['listing' => $listing]);
+    }
+
+    public function update(Request $request, Listing $listing) {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'company' => 'required',
+            'location' => 'required',
+            'website' => ['required', 'url'],
+            'email' => ['required', 'email'],
+            'tags' => 'required',
+            'description' => 'required',
+            'logo' => File::types(['jpg', 'png', 'svg'])->max(1024),
+        ]);
+
+        if ($validator->fails()) {
+            return redirect("/listings/$listing->id/edit")
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $formFields = $validator->validated();
+
+        if ($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+        $listing->update($formFields);
+
+        return redirect("/listings/$listing->id")->with('message', 'Listing updated successfully!');
+    }
 }
