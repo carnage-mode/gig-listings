@@ -52,7 +52,10 @@
                 </div>
             </x-card>
             <x-card class="mt-4 flex space-x-6">
-                <a href="/listings/{{$listing->id}}/edit" class="hover:text-laravel">
+                <a
+                    href="/listings/{{$listing->id}}/edit"
+                    class="bg-black text-white px-3 py-1 rounded-lg hover:opacity-80"
+                >
                     <i class="fa-solid fa-pen-to-square"></i>
                     Edit
                 </a>
