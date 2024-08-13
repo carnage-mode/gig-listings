@@ -27,10 +27,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/logout" class="hover:text-laravel">
+                        <form action="/logout" method="POST" class="inline">
+                            @csrf
+                            <button type="submit" class="hover:text-laravel">
                             <i class="fa-solid fa-xmark"></i>
-                            Log out
-                        </a>
+                                Log out
+                            </button>
+                        </form>
                     </li>
                 @else
                     <li>
