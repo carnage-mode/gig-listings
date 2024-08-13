@@ -91,4 +91,9 @@ class ListingController extends Controller
 
         return redirect("/listings/$listing->id")->with('message', 'Listing updated successfully!');
     }
+
+    public function destroy(Listing $listing): RedirectResponse {
+        $listing->delete();
+        return redirect("/")->with('message', 'Listing deleted successfully!');
+    }
 }

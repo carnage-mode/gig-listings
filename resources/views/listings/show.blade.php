@@ -56,6 +56,14 @@
                     <i class="fa-solid fa-pen-to-square"></i>
                     Edit
                 </a>
+                <form method="POST" actions="/listings/{{$listing->id}}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="bg-laravel text-white px-3 py-1 rounded-lg hover:opacity-80">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+                </form>
             </x-card>
         </div>
 
