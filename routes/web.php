@@ -33,5 +33,11 @@ Route::get('/register', [UserController::class, 'create']);
 // Store user details
 Route::post('/users/', [UserController::class, 'store']);
 
+// Show login form
+Route::get('/login/', [UserController::class, 'login']);
+
+// Authenticate and login
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
 // Logout
 Route::post('/logout', [UserController::class, 'logout']);
