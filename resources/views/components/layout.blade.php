@@ -61,7 +61,7 @@
             @auth
                 <a href="/listings/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5 rounded-full">Post Job</a
             @else
-                <a href="/listings/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5 rounded-full">Register to Post Jobs!</a
+                <a href="/register" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5 rounded-full">Register to Post Jobs!</a
             @endauth
         </footer>
         <x-flash-message/>
