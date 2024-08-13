@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 
 // All listings
 Route::get('/', [ListingController::class, 'index']);
@@ -25,3 +26,9 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 // Delete listing
 Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+
+// Show user registration page
+Route::get('/register', [UserController::class, 'create']);
+
+// Store user details
+Route::post('/users/', [UserController::class, 'store']);
