@@ -12,11 +12,13 @@
                 <div
                     class="flex flex-col items-center justify-center text-center"
                 >
-                    <img
-                        class="w-48 mr-6 mb-6"
-                        src="{{$listing->logo ? asset('storage/'. $listing->logo) : asset('/images/no-image.png')}}"
-                        alt=""
-                    />
+                    <div class="w-48 h-48 flex flex-row justify-center items-center mb-6">
+                        <img
+                            class="object-contatin max-w-48 max-h-48"
+                            src="{{$listing->logo ? asset('storage/'. $listing->logo) : asset('/images/no-image.png')}}"
+                            alt=""
+                        />
+                    </div>
 
                     <h3 class="text-2xl mb-2">{{$listing->title}}</h3>
                     <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
