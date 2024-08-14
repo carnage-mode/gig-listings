@@ -74,7 +74,7 @@ class User extends Authenticatable
         ];
     }
 
-    protected function listings(): HasMany {
+    public function listings(): HasMany {
         return $this->hasMany(Listing::class, 'user_id');
     }
 }
