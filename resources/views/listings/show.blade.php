@@ -51,23 +51,27 @@
                     </div>
                 </div>
             </x-card>
-            <x-card class="mt-4 flex space-x-6">
-                <a
-                    href="/listings/{{$listing->id}}/edit"
-                    class="bg-black text-white px-3 py-1 rounded-lg hover:opacity-80"
-                >
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    Edit
-                </a>
-                <form method="POST" actions="/listings/{{$listing->id}}">
-                    @csrf
-                    @method('DELETE')
-                    <button class="bg-laravel text-white px-3 py-1 rounded-lg hover:opacity-80">
-                        <i class="fa-solid fa-trash"></i>
-                        Delete
-                    </button>
-                </form>
-            </x-card>
+            @auth
+                @if (auth()->id() == $listing->user_id)
+                    <x-card class="mt-4 flex space-x-6">
+                        <a
+                            href="/listings/{{$listing->id}}/edit"
+                            class="bg-black text-white px-3 py-1 rounded-lg hover:opacity-80"
+                        >
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Edit
+                        </a>
+                        <form method="POST" actions="/listings/{{$listing->id}}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="bg-laravel text-white px-3 py-1 rounded-lg hover:opacity-80">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </button>
+                        </form>
+                    </x-card>
+                @endif
+            @endauth
         </div>
 
     @else

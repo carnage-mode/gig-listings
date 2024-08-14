@@ -61,10 +61,18 @@ class ListingController extends Controller
     }
 
     public function edit(Listing $listing) {
+        if (auth()->id() != $listing->user_id) {
+            abort(403);
+        }
+
         return view('listings.edit', ['listing' => $listing]);
     }
 
     public function update(Request $request, Listing $listing) {
+        if (auth()->id() != $listing->user_id) {
+            abort(403);
+        }
+
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'company' => 'required',
@@ -94,6 +102,10 @@ class ListingController extends Controller
     }
 
     public function destroy(Listing $listing): RedirectResponse {
+        if (auth()->id() != $listing->user_id) {
+            abort(403);
+        }
+
         $listing->delete();
         return back()->with('message', 'Listing deleted successfully!');
     }
