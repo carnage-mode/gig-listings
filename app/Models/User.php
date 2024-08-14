@@ -6,9 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Listing;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -70,5 +72,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    protected function listings(): HasMany {
+        return $this->hasMany(Listing::class, 'user_id');
     }
 }

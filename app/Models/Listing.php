@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $title
@@ -50,5 +52,9 @@ class Listing extends Model
                 ->orWhere('location', 'like', '%' . request('search') . '%')
                 ->orWhere('tags', 'like', '%' . request('search') . '%');
         }
+    }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
