@@ -32,7 +32,13 @@ Perfrom database migrations
 php artisan migrate
 ```
 
-To use the dev server, run the following commands in a terminal window
+Add necessary symbolic links for storing files
+
+```
+php artisan storage:link
+```
+
+To use the dev server, run the following commands in a persistent terminal window
 
 ```
 php artisan serve
