@@ -50,14 +50,18 @@
                             </tr>
                         @endforeach
                     @else
-                        <tr class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                            <p>No listings found</p>
+                        <tr class="border-gray-300">
+                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
+                                <p class="text-center">No listings found</p>
+                            </td>
                         </tr>
                     @endunless
-                        <tr class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                            <a href="/listings/create" class="bg-black text-white px-3 py-1 rounded-lg hover:opacity-80">
-                                Add Job
-                            </a
+                        <tr class="border-gray-300">
+                            <td class="px-4 py-8 border-t border-gray-300 text-lg">
+                                <a href="/listings/create" class="bg-black text-white px-3 py-1 rounded-lg hover:opacity-80">
+                                    Add Listings
+                                </a
+                            </td>
                         </tr>
                 </tbody>
             </table>
